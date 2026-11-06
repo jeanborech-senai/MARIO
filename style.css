@@ -1,0 +1,85 @@
+/* Tira as margens e espaços padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Área do jogo: céu azul e chão verde embaixo */
+.game-board {
+    width: 100%;
+    height: 500px;
+    border-bottom: 20px solid green;
+    position: relative;       /* permite posicionar os itens dentro dela */
+    overflow: hidden;         /* esconde o que sair da tela */
+    background: linear-gradient(#87ceeb, #e0f6ff);
+}
+
+/* Tudo que fica solto dentro da área do jogo */
+.score, .restart, .mario, .pipe, .clouds {
+    position: absolute;
+}
+
+/* Mario e cano ficam no chão */
+.mario, .pipe {
+    bottom: 0;
+}
+
+/* Textos do jogo (pontos e game over) */
+.score, .restart {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    z-index: 10;              /* fica na frente das imagens */
+}
+
+.score {
+    top: 15px;
+    left: 20px;
+    font-size: 28px;
+}
+
+/* Mensagem de game over: escondida até o Mario bater */
+.restart {
+    display: none;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);   /* centraliza na horizontal */
+    font-size: 32px;
+}
+
+.mario {
+    width: 150px;
+}
+
+/* Cano e nuvens andam para a esquerda (cano rápido, nuvens devagar) */
+.pipe {
+    width: 80px;
+    animation: pipe-animation 2s infinite linear;
+}
+
+.clouds {
+    width: 450px;
+    animation: clouds-animation 20s infinite linear;
+}
+
+/* Classe adicionada pelo JS para fazer o Mario pular */
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+/* @keyframes define os passos de uma animação */
+@keyframes pipe-animation {
+    from { right: -80px; }
+    to   { right: 100%; }
+}
+
+@keyframes clouds-animation {
+    from { right: -550px; }
+    to   { right: 100%; }
+}
+
+/* Pulo: sobe até 180px, fica um tempo no ar e desce */
+@keyframes jump {
+    0%, 100% { bottom: 0; }
+    40%, 60% { bottom: 180px; }
+}
