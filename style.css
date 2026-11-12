@@ -1,1 +1,90 @@
 
+/* Tira as margens e espaços padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Área do jogo: céu azul e chão verde embaixo */
+.game-board {
+    width: 100%;
+    height: 500px;
+    border-bottom: 20px solid green;
+    position: relative;       /* permite posicionar os itens dentro dela */
+    overflow: hidden;         /* esconde o que sair da tela */
+    background: linear-gradient(#87ceeb, #e0f6ff);
+}
+
+/* Texto da pontuação, no canto superior esquerdo */
+.score {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 10;              /* fica na frente das outras imagens */
+}
+
+/* Mensagem de game over: escondida até o Mario bater */
+.restart {
+    display: none;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);   /* centraliza na horizontal */
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Cano: começa fora da tela (direita) e anda para a esquerda */
+.pipe {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    animation: pipe-animation 2s infinite linear;
+}
+
+/* Mario: fica no chão */
+.mario {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+}
+
+/* Classe adicionada pelo JS para fazer o Mario pular */
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+/* Nuvens: andam devagar para a esquerda */
+.clouds {
+    position: absolute;
+    width: 450px;
+    animation: clouds-animation 20s infinite linear;
+}
+
+/* @keyframes define os passos de uma animação */
+
+/* Cano anda da direita para a esquerda */
+@keyframes pipe-animation {
+    from { right: -80px; }
+    to   { right: 100%; }
+}
+
+/* Pulo: sobe até 180px, fica um tempo no ar e desce */
+@keyframes jump {
+    0%   { bottom: 0; }
+    40%  { bottom: 180px; }
+    60%  { bottom: 180px; }
+    100% { bottom: 0; }
+}
+
+/* Nuvens andam da direita para a esquerda */
+@keyframes clouds-animation {
+    from { right: -550px; }
+    to   { right: 100%; }
+}
