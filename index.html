@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Liga o arquivo de estilos (CSS) -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Liga o arquivo do jogo (JS). O "defer" espera o HTML carregar antes de rodar -->
+    <script src="./js/script.js" defer></script>
+
+    <title>Mario Jump</title>
+</head>
+
+<body>
+
+    <!-- Área do jogo -->
+    <div class="game-board">
+
+        <!-- Pontuação mostrada no canto da tela -->
+        <p class="score">Pontos: <span id="score">0</span></p>
+
+        <!-- Mensagem de game over (começa escondida, o JS mostra quando o Mario bate) -->
+        <p class="restart">Game over! Aperte ESPAÇO para jogar de novo</p>
+
+        <!-- Nuvens (só decoração) -->
+        <img src="./imagens/clouds.png" class="clouds">
+
+        <!-- Personagem do jogador -->
+        <img src="./imagens/mario.gif" class="mario">
+
+        <!-- Obstáculo que vem em direção ao Mario -->
+        <img src="./imagens/pipe.png" class="pipe">
+
+    </div>
+
+</body>
+
+</html>
